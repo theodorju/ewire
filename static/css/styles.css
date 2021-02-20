@@ -1,0 +1,393 @@
+@charset "UTF-8";
+/*
+  WebKit is a website rendering engine currently used by Safari and Chrome
+*/
+
+html {
+  font-family: 'Raleway', sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+a {
+  color: #fed136;
+}
+
+a:hover {
+  color: #e6b301;
+}
+
+/* :focus when targeted by the keyboard or activated by the mouse */
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto Highlight;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+button,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+}
+
+.container {
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(254, 209, 54, 0.25);
+}
+
+.btn-primary {
+  background-color: #fed136;
+  border-color: #fed136;
+}
+
+.btn-primary:hover {
+  background-color: #fec810;
+  border-color: #fec503;
+}
+
+.btn-primary:focus {
+  background-color: #fec810;
+  border-color: #fec503;
+  box-shadow: 0 0 0 0.2rem rgba(254, 216, 84, 0.5);
+}
+
+.btn-primary:disabled {
+  background-color: #fed136;
+  border-color: #fed136;
+}
+
+#primary-btn:active {
+  background-color: #fec810;
+  border-color: #f3bd01;
+}
+
+.navbar-toggler-icon {
+  background-size: 100% 100%;
+}
+
+.bg-primary {
+  background-color: #fed136 !important;
+}
+
+a.bg-primary:hover,
+a.bg-primary:focus,
+button.bg-primary:hover,
+button.bg-primary:focus {
+  background-color: #fec503 !important;
+}
+
+.text-primary {
+  color: #1e1e43c7 !important;
+}
+
+a.text-primary:hover,
+a.text-primary:focus {
+  color: #e6b301 !important;
+}
+
+.contact-text-muted {
+  color: #cbcbd1 !important;
+}
+
+.page-section {
+  padding: 3rem 0;
+}
+
+.page-section h2.section-heading {
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.page-section h3.section-subheading {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 9rem 0;
+  }
+}
+
+::-moz-selection {
+  background: #fed136;
+  text-shadow: none;
+}
+
+::selection {
+  background: #fed136;
+  text-shadow: none;
+}
+
+img::-moz-selection {
+  background: transparent;
+}
+
+img::selection {
+  background: transparent;
+}
+
+img::-moz-selection {
+  background: transparent;
+}
+
+.btn-xl {
+  padding: 1.25rem 2.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.btn-social {
+  height: 2.5rem;
+  width: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 100%;
+}
+
+#mainNav {
+  background-color: #1e1e42;
+}
+
+#mainNav .navbar-toggler {
+  padding: 0.75rem;
+  font-size: 0.75rem;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: #fed136;
+  border: 0;
+}
+
+#mainNav .navbar-brand {
+  color: #fed136;
+  font-weight: 700;
+  letter-spacing: 0.0625em;
+  text-transform: uppercase;
+}
+
+#mainNav .navbar-brand img {
+  height: 1.5rem;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link {
+  font-size: 1.0rem;
+  color: #fff;
+  letter-spacing: 0.0625em;
+}
+
+#mainNav .navbar-nav .nav-item .nav-link:hover {
+  color: #fed136;
+}
+
+@media (min-width: 992px) {
+  #mainNav {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    border: none;
+    background-color: #1e1e42;
+    transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+  }
+
+  #mainNav .navbar-brand {
+    font-size: 1.5em;
+    transition: font-size 0.3s ease-in-out;
+  }
+
+  #mainNav .navbar-brand img {
+    height: 2rem;
+    transition: height 0.3s ease-in-out;
+  }
+
+  #mainNav.navbar-shrink {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #212529;
+  }
+
+  #mainNav.navbar-shrink .navbar-brand {
+    font-size: 1.25em;
+  }
+
+  #mainNav.navbar-shrink .navbar-brand svg,  #mainNav.navbar-shrink .navbar-brand img {
+    height: 1.5rem;
+  }
+
+  #mainNav .navbar-nav .nav-item {
+    margin-right: 1rem;
+  }
+
+  #mainNav .navbar-nav .nav-item:last-child {
+    margin-right: 0;
+  }
+}
+
+header.masthead {
+  padding-top: 10.5rem;
+  padding-bottom: 6rem;
+  text-align: center;
+  color: #fff;
+  background-image: url("../assets/img/header-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+}
+
+header.masthead .masthead-subheading {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-bottom: 25px;
+  
+}
+
+header.masthead .masthead-heading {
+  font-family: 'Megrim';
+  font-size: 3.25rem;
+  font-weight: 400;
+  line-height: 3.25rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  header.masthead {
+    padding-top: 17rem;
+    padding-bottom: 12.5rem;
+  }
+
+  header.masthead .masthead-subheading {
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+    margin-bottom: 2rem;
+  }
+
+  header.masthead .masthead-heading {
+    font-family: 'Megrim';
+    font-size: 7.5rem;
+    font-weight: 700;
+    line-height: 4.5rem;
+    margin-bottom: 4rem;
+  }
+}
+
+.team-member {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.team-member img {
+  width: 14.5rem;
+  height: 14rem;
+  border: 0.5rem solid rgba(0, 0, 0, 0.1);
+}
+
+.team-member h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+section#contact {
+  background-color: #1e1e42;
+}
+
+section#contact .section-heading {
+  color: #fff;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.btn-secondary, .btn-secondary:hover {
+  color: #4f4f6c;
+  border-color: #4f4f6c;
+}
+
+#btn-explore {
+  background-color: #fff;
+}
+
+#btn-explore span {
+  background-color: #fff;
+  color: #4f4f6c;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#btn-explore span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#btn-explore:hover span {
+  background-color: #fff;
+  padding-right: 25px;
+}
+
+#btn-explore:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#btn-explore:active, 
+#btn-explore:focus {
+  background-color: #fff;
+}
+
+#btn-contact:active,
+#btn-contact:focus {
+  background-color: #fec810;
+  border-color: #fec503;
+}
+
+textarea.form-control{
+  height: 7.88rem;
+}
+
+.form-control {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.invalidEmail {
+  visibility: hidden;
+}
+
+.invalidEmail-error {
+  visibility: visible;
+  color: red;
+}
