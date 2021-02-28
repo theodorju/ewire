@@ -58,4 +58,4 @@ dependencies:
     - soupsieve==2.2
     - urllib3==1.26.3
     - werkzeug==1.0.1
-prefix: /home/theodor/miniconda3/envs/ewire
+
