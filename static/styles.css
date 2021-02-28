@@ -254,7 +254,7 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../assets/img/header-bg.jpg");
+  background-image: url("assets/img/header-bg.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -295,6 +295,14 @@ header.masthead .masthead-heading {
     line-height: 4.5rem;
     margin-bottom: 4rem;
   }
+}
+
+#visualizations{
+  padding-top: 75px;
+}
+
+#team{
+  padding-top: 75px;
 }
 
 .team-member {
@@ -390,4 +398,8 @@ textarea.form-control{
 .invalidEmail-error {
   visibility: visible;
   color: red;
+}
+
+#daily-load-grid {
+  padding-top:80px;
 }
