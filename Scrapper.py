@@ -6,7 +6,8 @@ from bs4 import BeautifulSoup
 from datetime import date, timedelta
 from Globals import ADMIE_SITE_PREFIX, ADMIE_LOAD_FORECAST_URL, \
     LATEST_LOAD_FORECAST_SELECTOR, EARLIEST_LOAD_FORECAST_SELECTOR, \
-    DAILY_COLUMN_START, DAILY_COLUMN_END
+    COLUMN_START, COLUMN_END, LATEST_RES_FORECAST_SELECTOR, \
+    EARLIEST_RES_FORECAST_SELECTOR
 
 
 def download_daily_forecast():
@@ -43,21 +44,46 @@ def download_daily_forecast():
     # Create the download link
     load_forecast_link = ADMIE_SITE_PREFIX + load_forecast_a["href"]
 
-    # Directory to download
-    target_dir = "data/daily_forecast/"
-    file = target_dir + target_day + "_DailyForecast.xlsx"
+    # Directory to download daily forecast
+    daily_target_dir = "data/daily_forecast/"
+    daily_file = daily_target_dir + target_day + "_DailyForecast.xlsx"
 
     # Download the file into the data directory
-    urllib.request.urlretrieve(load_forecast_link, file)
+    urllib.request.urlretrieve(load_forecast_link, daily_file)
 
-    # Parse file and update json
-    parse_daily_forecast(file)
+    # RES FORECAST todo: refactor download to a new function
+    # Renewable energy infusion daily date
+    res_forecast_a = admie_soup.find(href=re.compile(
+        target_day + "_" + LATEST_RES_FORECAST_SELECTOR))
+
+    # If the latest was not available yet get the earliest
+    if not res_forecast_a:
+        res_forecast_a = \
+            admie_soup.find(href=re.compile(
+                target_day + "_" + EARLIEST_RES_FORECAST_SELECTOR))
+
+    # Create the res forecast download link
+    res_forecast_link = ADMIE_SITE_PREFIX + res_forecast_a["href"]
+
+    # Directory to download res daily forecast
+    res_target_dir = "data/res_forecast/"
+    res_file = res_target_dir + target_day + "_RESForecast.xlsx"
+
+    # Download the res forecast
+    urllib.request.urlretrieve(res_forecast_link, res_file)
+
+    # Parse forecast file and update json
+    parse_forecast(daily_file, 'daily_forecast.json')
+
+    # Parse res file and update json
+    parse_forecast(res_file, 'res_forecast.json')
 
 
-def parse_daily_forecast(
+def parse_forecast(
         file,
-        column_start=DAILY_COLUMN_START,
-        column_end=DAILY_COLUMN_END):
+        output_file,
+        column_start=COLUMN_START,
+        column_end=COLUMN_END):
     """
     Given an excel file extract the numerical values between the start and
     end indexes.
@@ -65,6 +91,7 @@ def parse_daily_forecast(
     Arguments:
         file(str): Complete file path including the filename of the excel
             file to be parsed.
+        output_file (str): Output json file that should be updated
         column_start(int): Column from which the data begin.
         column_end(int): Column where the data end.
 
@@ -89,7 +116,7 @@ def parse_daily_forecast(
               if isinstance(cell.value, float)]
 
     # Open file to add new values
-    with open('data/daily_forecast.json', 'w+') as json_file:
+    with open('data/' + output_file, 'w+') as json_file:
         try:
             loaded_json = json.load(json_file)
 
