@@ -18,6 +18,10 @@ The following assumptions were made:
 
 If those assumptions are not true, the website is not guaranteed to perform as expected. It is possible that extra modifications in code would be necessary.
 
+## Conda environment:
+- To create an anaconda environment based on yml file:
+`conda env create -f environment.yml`
+
 ## Environmental variables:
 - To be able to start the server with `flask run` export:
 `export FLASK_APP=App`

@@ -1,8 +1,26 @@
 import smtplib
 import os
+import json
+from datetime import date
 from flask import Flask, render_template, url_for, request, redirect
+from apscheduler.schedulers.background import BackgroundScheduler
 from Dashboard import create_daily_plot
+from Scrapper import download_daily_forecast
 
+
+def prepare_file():
+    """ Function for test purposes. """
+
+    # Update daily forecast json file
+    download_daily_forecast()
+
+
+# Background scheduler to download and parse file
+job = BackgroundScheduler()
+
+# Scheduler will run daily at 4 AM
+job.add_job(prepare_file, 'cron', hour=4)
+job.start()
 
 # Create flask instance
 app = Flask(__name__, static_folder='static')
@@ -59,16 +77,18 @@ def contact_form():
 
 @app.route("/daily")
 def daily():
-    # Hardcoded-values for testing
-    values = [4910.0, 4820.0, 4820.0, 4780.0, 4660.0, 4550.0, 4460.0, 4460.0,
-              4450.0, 4470.0, 4540.0, 4610.0, 4700.0, 4860.0, 5060.0, 5300.0,
-              5590.0, 5850.0, 6090.0, 6290.0, 6440.0, 6540.0, 6600.0, 6600.0,
-              6550.0, 6360.0, 6060.0, 5960.0, 6000.0, 5970.0, 5880.0, 5760.0,
-              5620.0, 5760.0, 6190.0, 6550.0, 6830.0, 6840.0, 6840.0, 6760.0,
-              6590.0, 6400.0, 6180.0, 5970.0, 5770.0, 5600.0, 5440.0, 5110.0]
+    # Open json file
+    with open('data/daily_forecast.json') as json_file:
+        loaded_json = json.load(json_file)
 
+    # Extract target values from json file
+    target_date = date.today().strftime("%Y%m%d")
+    values = loaded_json[target_date]
+
+    # Create the plot
     script, plot = create_daily_plot(values)
 
+    # Render template
     return render_template("daily.html", script=script, plot=plot)
 
 
