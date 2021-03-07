@@ -5,22 +5,27 @@ from flask.cli import with_appcontext
 
 
 def get_db():
-    if 'db' not in g:
-        g.db = sqlite3.connect(
-            current_app.config['DATABASE'],
-            detect_types=sqlite3.PARSE_DECLTYPES
-        )
-        g.db.row_factory = sqlite3.Row
-    return g.db
+    """
+    Connect to the database
+    """
+    # Establish db connection to the file pointed by current_app DATABASE
+    # configuration
+    db = sqlite3.connect(
+        current_app.config['DATABASE'],
+        detect_types=sqlite3.PARSE_DECLTYPES
+    )
 
+    # Return rows that behave like dictionaries
+    db.row_factory = sqlite3.Row
 
-def close_db(e=None):
-    db = g.pop('db', None)
-    if db is not None:
-        db.close()
+    # Return the connection
+    return db
 
 
 def init_db():
+    """
+    Initialize the database based on schema.sql
+    """
     db = get_db()
 
     # Open schema.sql file relative to the ewire package
@@ -28,19 +33,20 @@ def init_db():
         db.executescript(f.read().decode('utf8'))
 
 
-@click.command('init-db')
+@click.command('init-db')  # Define a command line command called init-db
 @with_appcontext
 def init_db_command():
-    """Clear any existing data and create new tables"""
+    """Clear any existing data and create new tables."""
     init_db()
     click.echo("Initialized database.")
 
 
 def init_app(app):
     """
-    Register commands
+    Register close_db and init_db_command to the application.
+    Arguments:
+        app (Flask obj): Flask application
     """
-    # Function to call when cleaning up after returning the response
-    app.teardown_appcontext(close_db)
 
+    # Add new command
     app.cli.add_command(init_db_command)
