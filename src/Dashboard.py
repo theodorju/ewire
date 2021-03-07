@@ -6,7 +6,7 @@ from bokeh.models.tools import HoverTool, BoxZoomTool, ResetTool, \
     LassoSelectTool, WheelZoomTool, PanTool, SaveTool
 from bokeh.models.formatters import DatetimeTickFormatter
 from bokeh.embed import components
-from Globals import BLUE, RED
+from .Globals import BLUE, RED
 
 
 def create_daily_load_plot(daily_forecast):

@@ -4,7 +4,7 @@ import re
 import openpyxl as op
 from bs4 import BeautifulSoup
 from datetime import date, timedelta
-from Globals import ADMIE_SITE_PREFIX, ADMIE_LOAD_FORECAST_URL, \
+from .Globals import ADMIE_SITE_PREFIX, ADMIE_LOAD_FORECAST_URL, \
     LATEST_LOAD_FORECAST_SELECTOR, EARLIEST_LOAD_FORECAST_SELECTOR, \
     COLUMN_START, COLUMN_END, LATEST_RES_FORECAST_SELECTOR, \
     EARLIEST_RES_FORECAST_SELECTOR
@@ -45,7 +45,7 @@ def download_daily_forecast():
     load_forecast_link = ADMIE_SITE_PREFIX + load_forecast_a["href"]
 
     # Directory to download daily forecast
-    daily_target_dir = "data/daily_forecast/"
+    daily_target_dir = "../data/daily_forecast/"
     daily_file = daily_target_dir + target_day + "_DailyForecast.xlsx"
 
     # Download the file into the data directory
@@ -66,7 +66,7 @@ def download_daily_forecast():
     res_forecast_link = ADMIE_SITE_PREFIX + res_forecast_a["href"]
 
     # Directory to download res daily forecast
-    res_target_dir = "data/res_forecast/"
+    res_target_dir = "../data/res_forecast/"
     res_file = res_target_dir + target_day + "_RESForecast.xlsx"
 
     # Download the res forecast
@@ -116,7 +116,7 @@ def parse_forecast(
               if isinstance(cell.value, float)]
 
     # Open file to add new values
-    with open('data/' + output_file, 'w+') as json_file:
+    with open('../data/' + output_file, 'w+') as json_file:
         try:
             loaded_json = json.load(json_file)
 
