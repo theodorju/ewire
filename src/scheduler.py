@@ -13,7 +13,7 @@ def start_scheduler():
     # Background scheduler to download and parse file
     job = BackgroundScheduler()
 
-    # Scheduler will run daily at 4 AM
-    job.add_job(prepare_file, 'cron', hour=4)
+    # Scheduler will run daily at 1 AM
+    job.add_job(prepare_file, 'cron', hour=1)
     job.start()
-
+    print("Scheduler started.")

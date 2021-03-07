@@ -3,7 +3,7 @@ import urllib.request
 import re
 import openpyxl as op
 from bs4 import BeautifulSoup
-from datetime import date, timedelta
+from datetime import date
 from .Globals import ADMIE_SITE_PREFIX, ADMIE_LOAD_FORECAST_URL, \
     LATEST_LOAD_FORECAST_SELECTOR, EARLIEST_LOAD_FORECAST_SELECTOR, \
     COLUMN_START, COLUMN_END, LATEST_RES_FORECAST_SELECTOR, \
@@ -21,7 +21,7 @@ def download_daily_forecast():
     # todo: if the download succeeds clean old files
     # Download for day "t" will happen at night of day t-1, target_day will be
     # in the format "YYYYmmdd"
-    target_day = (date.today() + timedelta(days=1)).strftime("%Y%m%d")
+    target_day = date.today().strftime("%Y%m%d")
 
     with urllib.request.urlopen(ADMIE_LOAD_FORECAST_URL) as response:
         # Read the HTML as bytearray
@@ -45,7 +45,7 @@ def download_daily_forecast():
     load_forecast_link = ADMIE_SITE_PREFIX + load_forecast_a["href"]
 
     # Directory to download daily forecast
-    daily_target_dir = "../data/daily_forecast/"
+    daily_target_dir = "ewire/data/daily_forecast/"
     daily_file = daily_target_dir + target_day + "_DailyForecast.xlsx"
 
     # Download the file into the data directory
@@ -66,7 +66,7 @@ def download_daily_forecast():
     res_forecast_link = ADMIE_SITE_PREFIX + res_forecast_a["href"]
 
     # Directory to download res daily forecast
-    res_target_dir = "../data/res_forecast/"
+    res_target_dir = "ewire/data/res_forecast/"
     res_file = res_target_dir + target_day + "_RESForecast.xlsx"
 
     # Download the res forecast
@@ -100,7 +100,7 @@ def parse_forecast(
     """
 
     # Date
-    target_day = (date.today() + timedelta(days=1)).strftime("%Y%m%d")
+    target_day = date.today().strftime("%Y%m%d")
 
     # Load workbook
     wb = op.load_workbook(file)
@@ -116,7 +116,7 @@ def parse_forecast(
               if isinstance(cell.value, float)]
 
     # Open file to add new values
-    with open('../data/' + output_file, 'w+') as json_file:
+    with open('ewire/data/' + output_file, 'w+') as json_file:
         try:
             loaded_json = json.load(json_file)
 
@@ -129,7 +129,3 @@ def parse_forecast(
         # First time running, create the file
         except json.JSONDecodeError:
             json.dump({target_day: values}, json_file, indent=4)
-
-
-if __name__ == "__main__":
-    download_daily_forecast()

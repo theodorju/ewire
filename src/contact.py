@@ -1,6 +1,7 @@
 import smtplib
 import os
 from flask import url_for, request, redirect, Blueprint
+from .db import get_db
 
 bp = Blueprint('contact', __name__)
 
@@ -12,7 +13,8 @@ def contact_form():
     Function also sends an email with the information the user has entered in
     the form
     """
-    # Get the form variables
+    # Get the form variables, no need to validate here since validation is
+    # already performed on the client side
     username = request.form.get("username")
     email = request.form.get("email")
     message = request.form.get("message")
@@ -22,22 +24,34 @@ def contact_form():
         "User: {} with email: {} wrote the following:\n {}". \
             format(username, email, message)
 
-    # Send email using Gmail
-    # Configure google's smtp server listening on port 587
-    server = smtplib.SMTP("smtp.gmail.com", 587)
+    # Insert user to database
+    db = get_db()
 
-    # Start the server
-    server.starttls()
+    # Check if the user already exists in the database
+    cur = db.cursor()
 
-    # Get the mail and password from environmental variables
-    ewire_password = os.getenv("EWIRE_PASSWORD")
-    ewire_email = os.getenv("EWIRE_EMAIL")
+    row = \
+        cur.execute(
+            "SELECT user_id FROM user WHERE email = ?", (email,)).fetchone()
 
-    # Login using email and password
-    server.login(ewire_email, ewire_password)
+    # If the user does not exist
+    if row is None:
+        # Insert user to "user" table
+        cur.execute("INSERT INTO user (username, email) VALUES (?, ?)",
+                    (username, email))
 
-    # Send email with the users message
-    server.sendmail(ewire_email, ewire_email, form_info)
+    # Get the user id
+    user_id = cur.execute("SELECT user_id FROM user WHERE email = ?",
+                          (email,)).fetchone()[0]
+
+    # Insert message to "message" table
+    cur.execute("INSERT INTO message (user_id, user_message) VALUES (?, ?)",
+                (user_id, message))
+
+    # Commit changes
+    db.commit()
+
+    # Close the database
+    db.close()
 
     return redirect(url_for('index', _anchor="contact", submitted="submitted"))
-

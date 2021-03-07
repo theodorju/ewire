@@ -35,8 +35,3 @@ If those assumptions are not true, the website is not guaranteed to perform as e
 
 - To use Flask under development export:
 `export FLASK_ENV=development`
-
-- To be able to receive mails from the contact form export:
-`export EWIRE_MAIL=<your_email>`
-`export MAIL_PASSWORD=<your_password>`
-
