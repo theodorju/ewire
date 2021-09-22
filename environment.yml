@@ -5,65 +5,68 @@ channels:
   - defaults
 dependencies:
   - _libgcc_mutex=0.1
+  - _openmp_mutex=4.5
   - apscheduler=3.7.0
   - blas=1.0
-  - bokeh=2.2.3
-  - ca-certificates=2020.10.14
-  - certifi=2020.12.5
+  - bokeh=2.3.3
+  - ca-certificates=2021.7.5
+  - certifi=2021.5.30
   - et_xmlfile=1.0.1
   - freetype=2.10.4
+  - intel-openmp=2021.3.0
   - jdcal=1.4.1
-  - jinja2=2.11.3
+  - jinja2=3.0.1
   - jpeg=9b
-  - lcms2=2.11
-  - ld_impl_linux-64=2.33.1
-  - libedit=3.1.20191231
+  - lcms2=2.12
+  - ld_impl_linux-64=2.35.1
   - libffi=3.3
-  - libgcc-ng=9.1.0
-  - libgfortran-ng=7.3.0
-  - libopenblas=0.3.10
+  - libgcc-ng=9.3.0
+  - libgomp=9.3.0
   - libpng=1.6.37
-  - libstdcxx-ng=9.1.0
-  - libtiff=4.1.0
+  - libstdcxx-ng=9.3.0
+  - libtiff=4.2.0
+  - libwebp-base=1.2.0
   - lz4-c=1.9.3
-  - markupsafe=1.1.1
+  - markupsafe=2.0.1
+  - mkl=2021.3.0
+  - mkl-service=2.4.0
+  - mkl_fft=1.3.0
+  - mkl_random=1.2.2
   - ncurses=6.2
-  - numpy=1.19.2
-  - numpy-base=1.19.2
+  - numpy=1.20.3
+  - numpy-base=1.20.3
   - olefile=0.46
+  - openjpeg=2.4.0
   - openpyxl=3.0.5
-  - openssl=1.1.1j
-  - packaging=20.9
-  - pillow=8.1.0
-  - pip=20.3.3
+  - openssl=1.1.1l
+  - packaging=21.0
+  - pillow=8.3.1
+  - pip=21.2.4
   - pyparsing=2.4.7
-  - python=3.9.1
-  - python-dateutil=2.8.1
+  - python=3.9.6
+  - python-dateutil=2.8.2
   - python_abi=3.9
   - pytz=2021.1
   - pyyaml=5.4.1
   - readline=8.1
   - setuptools=52.0.0
-  - six=1.15.0
-  - sqlite=3.33.0
+  - six=1.16.0
+  - sqlite=3.36.0
   - tk=8.6.10
   - tornado=6.1
-  - typing_extensions=3.7.4.3
-  - tzdata=2020f
+  - typing_extensions=3.10.0.0
+  - tzdata=2021a
   - tzlocal=2.0.0
-  - wheel=0.36.2
+  - wheel=0.37.0
   - xz=5.2.5
   - yaml=0.2.5
   - zlib=1.2.11
-  - zstd=1.4.5
+  - zstd=1.4.9
   - pip:
     - beautifulsoup4==4.9.3
-    - chardet==4.0.0
-    - click==7.1.2
+    - click==8.0.1
     - flask==1.1.2
-    - idna==2.10
-    - itsdangerous==1.1.0
-    - requests==2.25.1
-    - soupsieve==2.2
-    - urllib3==1.26.3
-    - werkzeug==1.0.1
+    - itsdangerous==2.0.1
+    - soupsieve==2.2.1
+    - werkzeug==2.0.1
+prefix: /home/theodoros/miniconda3/envs/ewire

@@ -31,7 +31,7 @@ If those assumptions are not true, the website is not guaranteed to perform as e
 
 ### Environmental variables:
 - To be able to start the server with `flask run` export:
-`export FLASK_APP=App`
+`export FLASK_APP=ewire`
 
 - To use Flask under development export:
 `export FLASK_ENV=development`
