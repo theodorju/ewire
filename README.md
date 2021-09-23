@@ -1,10 +1,6 @@
 # Ewire
 Project is still under development.
 
-### Database
-SQLite was chosen as database because it doesn't require setting up a separate database server and is built-in to Python.
-Even though concurrent write request are processes sequentially and might cause the application to slow down, this application is small and such cases are not expected here.
-
 ### Assumptions:
 Daily load forecast and renewable energy infusion predictions are generated from an outside system based on the requirements of [ADMIE](https://www.admie.gr/en). The algorithm that performs the scrapping of ADMIE site to download the latest forecast files was designed based on the way those files are uploaded, as of Feb. 2021. 
 The following assumptions were made:
@@ -18,6 +14,11 @@ The following assumptions were made:
 
 - Working assumptions:
     - If for whatever reason the download of a new file fails, the old values will be used instead an a pop-up should notify the users.
+
+### Database
+SQLite was chosen as database because it doesn't require setting up a separate database server and is built-in to Python.
+Even though concurrent write request are processes sequentially and might cause the application to slow down, this application is small and such cases are not expected here.
+
 
 If those assumptions are not true, the website is not guaranteed to perform as expected. It is possible that extra modifications in code would be necessary.
 
