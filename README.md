@@ -3,7 +3,7 @@
 ## General Information
 The project is based on my thesis for Aristotle University of Thessaloniki. The thesis can be found [here](https://ikee.lib.auth.gr/record/294600/files/theodor-athanasiadis-thesis.pdf).
 
-The main goal of the thesis was to bridge the gap in the relation between the electrical consumers and the electrical grid. In particular, through the webpage which was acompannied by a smart-lamp (using Rapsberry-PI), the users would have information regarding the hourly state of the electrical grid, namely
+The main goal of the thesis was to bridge the gap in between the electrical consumers and the electrical grid. In particular, through the webpage which was acompannied by a smart-lamp (using Rapsberry-PI), the users would have information regarding the hourly state of the electrical grid, namely
 its load and the renewable energy infusion. This repository includes the code for an updated version of the webpage.
 
 The webpage aims to quickly provide comprehensive graphs of daily load forecast and renewable energy infusion in Greece's Electrical Grid. The information for the daily load forecast as well as the renewable energy infusion are provided as excel files from the the Indepented Power Transmission Operator (IPTO) of Greece. Using python, those files are downloaded on the server and then plotted, each on a corresponding page.
