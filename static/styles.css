@@ -10,7 +10,7 @@ html {
 
 body {
   font-family: 'Raleway', sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
@@ -59,30 +59,20 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
   box-shadow: 0 0 0 0.2rem rgba(254, 209, 54, 0.25);
 }
 
-.btn-primary {
-  background-color: #fed136;
-  border-color: #fed136;
+
+#primary-btn {
+  background-color: #ffffff1f;
+  border-color: white;
 }
 
-.btn-primary:hover {
-  background-color: #fec810;
-  border-color: #fec503;
+#primary-btn:active,
+#primary-btn:hover {
+  background-color: #ffffff59;
+  border-color: white;
 }
 
-.btn-primary:focus {
-  background-color: #fec810;
-  border-color: #fec503;
-  box-shadow: 0 0 0 0.2rem rgba(254, 216, 84, 0.5);
-}
-
-.btn-primary:disabled {
-  background-color: #fed136;
-  border-color: #fed136;
-}
-
-#primary-btn:active {
-  background-color: #fec810;
-  border-color: #f3bd01;
+#primary-btn:focus {
+  box-shadow: 0 0 0 0.2rem rgb(255 255 255);
 }
 
 .navbar-toggler-icon {
@@ -124,9 +114,9 @@ a.text-primary:focus {
 }
 
 .page-section h3.section-subheading {
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-weight: 400;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -370,16 +360,30 @@ section#contact .section-heading {
   opacity: 1;
   right: 0;
 }
-
-#btn-explore:active, 
-#btn-explore:focus {
+  
+#btn-explore:focus,
+#btn-explore:hover {
   background-color: #fff;
+  box-shadow: 0 0 0 0.04rem #4f4f6c;
 }
 
-#btn-contact:active,
-#btn-contact:focus {
-  background-color: #fec810;
-  border-color: #fec503;
+#btn-contact {
+  background-color: #ffffff1f;
+  border-color: white;
+}
+
+#btn-contact:focus{
+  background-color: #ffffff1f;
+  box-shadow: 0 0 0 0.06rem #fff;
+}
+
+#btn-contact:active {
+  background-color: #ffffff59;
+  box-shadow: 0 0 0 0.2rem #fff;
+}
+
+#btn-contact:hover {
+  box-shadow: 0 0 0 0.06rem #fff;
 }
 
 textarea.form-control{
