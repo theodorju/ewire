@@ -31,6 +31,10 @@ a:hover {
   color: #e6b301;
 }
 
+#download {
+  color: #212529;
+}
+
 /* :focus when targeted by the keyboard or activated by the mouse */
 button:focus {
   outline: 1px dotted;
