@@ -407,3 +407,14 @@ textarea.form-control{
 #daily-load-grid {
   padding-top:80px;
 }
+
+#btn-social:focus, 
+#btn-social:hover {
+  background-color: #5d8387;
+  box-shadow: 0 0 0 0.06rem #fff;
+}
+
+#btn-social:active {
+  background-color: #5d8387;
+  box-shadow: 0 0 0 0.2rem #fff;
+}
